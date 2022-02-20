@@ -1,0 +1,34 @@
+{% extends 'tbases/base.html' %}
+
+{% block content %}
+<table class="table table-bordered">
+	<tread>
+		<tr>
+			<td>#</td>
+			<td>Nombre</td>
+			<td>Sexo</td>
+			<td>Edad</td>
+			<td>Fecha Rescate</td>
+			<td>Adoptante</td>
+
+		</tr>
+	</tread>
+	<tbody>
+		{% if mascotas %}
+			{% for each_mascota in mascotas%}
+				<tr>
+					<td>{{ each_mascota.id }}</td>
+					<td>{{ each_mascota.nombre }}</td>
+					<td>{{ each_mascota.sexo }}</td>
+					<td>{{ each_mascota.edad }}</td>
+					<td>{{ each_mascota.fecha_rescate }}</td>
+					<td>{{ each_mascota.persona.nombre }} {{each_mascota.persona.apellidos}}</td>
+				</tr>
+			{% endfor %}
+		{% else %}
+			<h1>No existen registro de mascotas</h1>
+		{% endif %}
+		
+	</tbody>
+</table>
+{% endblock %}
