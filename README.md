@@ -33,10 +33,9 @@ Cuan ya se no se requiera nada con el proyecto y requiere salir del entorno virt
 <br>`deactivate`
 
 ### Django 4.0.1
+`python -m pip install django=4.0.1`
 
-<br>`python -m pip install django=4.0.1`
-
-#### Instalación del proyecto
+### Instalación del proyecto
 Si creaste el entorno virtual entonces de preferencia posicionate dentro de la carptea del entorno virtual.
 
 Clonamos el repositorio
