@@ -23,6 +23,12 @@
 					<td>{{ each_mascota.edad }}</td>
 					<td>{{ each_mascota.fecha_rescate }}</td>
 					<td>{{ each_mascota.persona.nombre }} {{each_mascota.persona.apellidos}}</td>
+					<td>
+						<a class="btn btn-primary" href="{% url 'mascota:editar_mascota' each_mascota.id %}">Editar</a>
+					</td>
+					<td>
+						<a class="btn btn-danger" href="{% url 'mascota:eliminar_mascota' each_mascota.id %}">borrar</a>
+					</td>
 				</tr>
 			{% endfor %}
 		{% else %}

@@ -1,13 +1,19 @@
 from django.urls import path
 
-from apps.mascota.views import (index_mascota,
-                                mascota_view,
-                                listar_mascotas)
+from apps.mascota.views import (
+    indexMascota,
+    mascotaNueva,
+    listarMascotas,
+    mascotaEditar,
+    mascotaEliminar
+)
 
 app_name = 'mascota'
 
 urlpatterns = [
-    path('', index_mascota, name='index'),
-    path('NuevamMascota', mascota_view, name='mascota_nueva'),
-    path('listarMascotas', listar_mascotas, name='listar_mascotas')
+    path('', indexMascota, name='index'),
+    path('nueva',   mascotaNueva, name='mascota_nueva'),
+    path('listar', listarMascotas, name='listar_mascotas'),
+    path('editar/<int:id_mascota>',  mascotaEditar, name='editar_mascota'),
+    path('eliminar/<int:id_mascota>',  mascotaEliminar, name='eliminar_mascota'),
 ]

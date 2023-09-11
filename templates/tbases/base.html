@@ -31,8 +31,8 @@
 		            <li class="nav-item dropdown">
 		                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">Mascotas</a>
 		                <div class="dropdown-menu" aria-labelledby="dropdown01">
-		                    <a class="dropdown-item" href="listarMascotas">Listar</a>
-		                    <a class="dropdown-item" href="NuevamMascota">Registrar</a>
+		                    <a class="dropdown-item" href="listar">Listar</a>
+		                    <a class="dropdown-item" href="nueva">Registrar</a>
 		                    <!-- <a class="dropdown-item" href="#">Something else here</a> -->
 		                </div>
 		            </li>
@@ -59,7 +59,6 @@
 		                </div>
 	        		</li>
 		        </ul>
-
 		    </div>
 		</nav>
 		{% endblock%}
@@ -76,9 +75,11 @@
 		<!-------------------------------------------------------------------------->
 	    <!-- 						      FOOTER    						      -->
 	    <!-------------------------------------------------------------------------->
-		{% block footer %}
-		<h4>Este es el bloque del footer base</h4>
-		{% endblock %}
+		<div class="p-5">
+			{% block footer %}
+			<h4>Este es el bloque del footer base</h4>
+			{% endblock %}
+		</div>
 
 		<!-------------------------------------------------------------------------->
 	    <!-- 						Bootstrap JavaScript 						  -->

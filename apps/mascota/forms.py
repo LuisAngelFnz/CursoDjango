@@ -26,10 +26,10 @@ class MascotaForm(forms.ModelForm):
         }
 
         widgets = {
-            'nombre'        : forms.TextInput({'class':'form-group'}),
-            'sexo'          : forms.TextInput({'class':'form-group'}),
-            'edad'          : forms.TextInput({'class':'form-group'}),
-            'fecha_rescate' : forms.TextInput({'class':'form-group'}),
-            'persona'       : forms.Select({'class':'form-group'}),
-            'vacuna'        : forms.CheckboxSelectMultiple({'class':'form-check'}),
+            'nombre'        : forms.TextInput(attrs={'class':'form-control'}),
+            'sexo'          : forms.TextInput(attrs={'class':'form-control'}),
+            'edad'          : forms.TextInput(attrs={'class':'form-control'}),
+            'fecha_rescate' : forms.DateTimeInput(format='%Y-%m-%d'),
+            'persona'       : forms.Select(attrs={'class':'form-control'}),
+            'vacuna'        : forms.CheckboxSelectMultiple(),
         }

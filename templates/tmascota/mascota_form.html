@@ -5,26 +5,8 @@
 <div class="starter-template p-5">
 	<form method="post">
 		{% csrf_token %}
-		{{  form.as_ul }}
-		<!-- <div class="form-group">
-			<label for="nombre">Nombre</label>
-			<input class="form-control" type="text" required="true">
-		</div>
-
-		<div class="form-group">
-			<label for="edad">Edad</label>
-			<input class="form-control" type="text" required="true">
-		</div>
-
-		{{ form.fecha_rescate.as_p }}
-
-		<div class="form-group">
-			<label for="nombre"></label>
-			<input class="form-control" type="text" required="true">
-			<small class="form-text text-muted">Nombre de la Mascota</small>
-		</div> -->
-
-		<button type="submit" class="btn btn-primary">Guardar</button>
+		{{ form.as_p }}
+		<button type="submit">Guardar</button>
 	</form>
 </div>
 {% endblock %}
