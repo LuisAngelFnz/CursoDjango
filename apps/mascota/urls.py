@@ -5,15 +5,19 @@ from apps.mascota.views import (
     mascotaNueva,
     listarMascotas,
     mascotaEditar,
-    mascotaEliminar
+    mascotaEliminar,
+    MascotaList,
+    MascotaCreate,
+    MascotaUpdate,
+    MascotaDelete
 )
 
 app_name = 'mascota'
 
 urlpatterns = [
-    path('', indexMascota, name='index'),
-    path('nueva',   mascotaNueva, name='mascota_nueva'),
-    path('listar', listarMascotas, name='listar_mascotas'),
-    path('editar/<int:id_mascota>',  mascotaEditar, name='editar_mascota'),
-    path('eliminar/<int:id_mascota>',  mascotaEliminar, name='eliminar_mascota'),
+    path('', indexMascota, name='mascota_index'),
+    path('nueva',   MascotaCreate.as_view(), name='mascota_nueva'),
+    path('listar', MascotaList.as_view(), name='listar_mascotas'),
+    path('editar/<int:pk>',  MascotaUpdate.as_view(), name='editar_mascota'),
+    path('eliminar/<int:pk>',  MascotaDelete.as_view(), name='eliminar_mascota'),
 ]

@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
+from apps.mascota.views import indexMascota
+
 urlpatterns = [
-    path('',  include('apps.mascota.urls', namespace='mascota')),
     path('admin/', admin.site.urls),
+    path('',  indexMascota, name='index'),
     path('adopcion/', include('apps.adopcion.urls', namespace='adopcion')),
     path('mascota/',  include('apps.mascota.urls', namespace='mascota')),
 ]

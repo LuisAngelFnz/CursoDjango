@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-
+from django.views.generic import (
+    ListView, CreateView, UpdateView, DeleteView
+)
+from django.urls import reverse_lazy
 from apps.mascota.forms import MascotaForm
 
 from apps.mascota.models import Mascota
@@ -58,4 +60,25 @@ def mascotaEliminar(request, id_mascota):
         return redirect('mascota:listar_mascotas')
     
     return render(request, 'tmascota/mascota_delete.html', {'mascota':objmascota})
-        
+
+class MascotaModel:
+    model = Mascota
+
+class MascotaList(MascotaModel, ListView):
+    template_name = 'tmascota/mascota_list.html'
+
+class MascotaCRUD(MascotaModel):
+    form_class    = MascotaForm
+    template_name = 'tmascota/mascota_form.html'
+    success_url   = reverse_lazy('mascota:listar_mascotas')
+
+class MascotaCreate(MascotaCRUD, CreateView):
+    pass
+
+class MascotaUpdate(MascotaCRUD, UpdateView):
+    pass
+
+class MascotaDelete(DeleteView):
+    model = Mascota
+    template_name =  'tmascota/mascota_delete.html'
+    success_url   = reverse_lazy('mascota:listar_mascotas')

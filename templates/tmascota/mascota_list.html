@@ -14,8 +14,8 @@
 		</tr>
 	</tread>
 	<tbody>
-		{% if mascotas %}
-			{% for each_mascota in mascotas%}
+		{% if object_list %}
+			{% for each_mascota in object_list %}
 				<tr>
 					<td>{{ each_mascota.id }}</td>
 					<td>{{ each_mascota.nombre }}</td>
