@@ -1,6 +1,6 @@
 from typing import Any
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse_lazy
 
 from django.views.generic import (
@@ -23,7 +23,7 @@ class SolicitudCreate(CreateView):
     template_name = 'tadopcion/solicitud_form.html'
     form_class = SolicitudForm
     second_form_class = PersonaForm
-    success_url = reverse_lazy('tadopcion:solicitud_listar.html')
+    success_url = reverse_lazy('adopcion:listar_solicitud')
     
     def get_context_data(self, **kwargs):
         context = super(SolicitudCreate, self).get_context_data(**kwargs)
