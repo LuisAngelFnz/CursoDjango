@@ -19,31 +19,35 @@ class SolicitudList(ListView):
     template_name = 'tadopcion/solicitud_listar.html'
 
 class SolicitudCreate(CreateView):
-    model = Solicitud
+    model         = Solicitud
     template_name = 'tadopcion/solicitud_form.html'
-    form_class = SolicitudForm
-    second_form_class = PersonaForm
-    success_url = reverse_lazy('adopcion:listar_solicitud')
+    form_class    = SolicitudForm
+    form_persona  = PersonaForm
+    success_url   = reverse_lazy('adopcion:listar_solicitud')
+    
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object
+        frm_solicitud = self.form_class(request.POST) # type: ignore
+        frm_persona   = self.form_persona(request.POST) # type: ignore
+        if frm_solicitud.is_valid() and frm_persona.is_valid():
+            solicitud = frm_solicitud.save(commit=False)  # type: ignore
+            solicitud.persona = frm_persona.save() # type: ignore
+            solicitud.save()
+            return HttpResponseRedirect(self.get_success_url())
+        else:
+            return self.render_to_response(
+                self.get_context_data(
+                    form=frm_solicitud,
+                    frm_persona=frm_persona
+                )
+            )
     
     def get_context_data(self, **kwargs):
         context = super(SolicitudCreate, self).get_context_data(**kwargs)
         if 'form' not in context:
-            context['form'] = self.form_class(self.request.GET)
+            context['form'] = self.form_class(self.request.GET) # type: ignore
         
-        if 'form2' not in context:
-            context['form2'] = self.second_form_class(self.request.GET)
+        if 'frm_persona' not in context:
+            context['frm_persona'] = self.form_persona(self.request.GET) # type: ignore
         
         return context
-
-    def post(self, request, *args, **kwargs):
-        self.object = self.get_object
-        form = self.form_class(request.POST)
-        form2 = self.second_form_class(request.POST)
-        if form.is_valid() and form2.is_valid():
-            solicitud = form.save(commit=False)
-            solicitud.persona = form2.save()
-            return HttpResponseRedirect(self.get_success_url())
-        else:
-            return self.render_to_response(
-                self.get_context_data(form=form, form2=form2)
-            )
