@@ -32,7 +32,7 @@ class PersonaForm(forms.ModelForm):
             'edad'      : forms.TextInput(attrs={'class':'form-control'}),
             'telefono'  : forms.TextInput(attrs={'class':'form-control'}),
             'email'     : forms.TextInput(attrs={'class':'form-control'}),
-            'domicilio' : forms.TextInput(attrs={'class':'form-control'}),
+            'domicilio' : forms.Textarea(attrs={'class':'form-control'}),
         }
 
 class SolicitudForm(forms.ModelForm):
@@ -47,6 +47,6 @@ class SolicitudForm(forms.ModelForm):
         }
 
         widgets = {
-            'numero_mascotas':forms.IntegerField(),
+            'numero_mascotas':forms.TextInput(attrs={'class':'form-control'}),
             'razones':forms.Textarea(attrs={'class':'form-control'})
         }

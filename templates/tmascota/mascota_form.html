@@ -2,11 +2,46 @@
 
 
 {% block content %}
-<div class="starter-template p-5">
-	<form method="post">
-		{% csrf_token %}
-		{{ form.as_p }}
-		<button type="submit">Guardar</button>
-	</form>
-</div>
+<form method="post">
+	{% csrf_token %}
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{ form.nombre.name }}">{{ form.nombre.label }}</label>
+				{{ form.nombre }}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{ form.sexo.name }}">{{ form.sexo.label }}</label>
+				{{ form.sexo }}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{ form.edad.name }}">{{ form.edad.label }}</label>
+				{{ form.edad }}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{ form.fecha_rescate.name }}">{{ form.fecha_rescate.label }}</label>
+				{{ form.fecha_rescate }}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{ form.persona.name }}">{{ form.persona.label }}</label>
+				{{ form.persona }}
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="{{ form.vacuna.name }}">{{ form.vacuna.label }}</label>
+				{{ form.vacuna }}
+			</div>
+		</div>
+	</div>
+	<button type="submit">Guardar</button>
+</form>
 {% endblock %}

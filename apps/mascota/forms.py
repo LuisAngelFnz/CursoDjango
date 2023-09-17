@@ -1,6 +1,6 @@
 from django import forms
 
-from apps.mascota.models import Mascota
+from apps.mascota.models import Mascota,Vacuna
 
 class MascotaForm(forms.ModelForm):
 
@@ -22,7 +22,7 @@ class MascotaForm(forms.ModelForm):
             'edad'          : 'Edad aproximada',
             'fecha_rescate' : 'Fecha de Rescate',
             'persona'       : 'Adoptante',
-            'vacuna'        : 'vacunas'
+            'vacuna'        : 'Vacunas'
         }
 
         widgets = {
@@ -31,5 +31,6 @@ class MascotaForm(forms.ModelForm):
             'edad'          : forms.TextInput(attrs={'class':'form-control'}),
             'fecha_rescate' : forms.DateTimeInput(format='%Y-%m-%d'),
             'persona'       : forms.Select(attrs={'class':'form-control'}),
-            'vacuna'        : forms.CheckboxSelectMultiple(),
+            'vacuna'        : forms.CheckboxSelectMultiple()
         }
+    # vacuna = forms.ModelMultipleChoiceField(queryset=Vacuna.objects.all())

@@ -1,96 +1,87 @@
 {% load static i18n%}
-
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
 
-    <!-------------------------------------------------------------------------->
-    <!-- 						Bootstrap CSS Link    						  -->
-    <!-------------------------------------------------------------------------->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <!-- <link href="{% static 'css/bootstrap-flatly.min.css' %}" rel="stylesheet"> -->
-	
-	<title>{% block title %} Refugio {% endblock %}</title>
-</head>
+		<title>Refugio Animal</title>
+		<!--Bootstrap CSS Link-->
+		
+		<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+		<link href="{% static 'css/starter-template.css' %}" rel="stylesheet">
+
+		<title>{% block title %} Refugio {% endblock %}</title>
+	</head>
 <body>
-	<div class="container">
-		<!-------------------------------------------------------------------------->
-	    <!-- 						      NAVBAR    						      -->
-	    <!-------------------------------------------------------------------------->
-		{% block navbar %}
-		<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-		    <a class="navbar-brand" href="..">Inicioo</a>
-		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-		    	<span class="navbar-toggler-icon"></span>
-		    </button>
-		    
-		    <div class="collapse navbar-collapse">
-		        <ul class="navbar-nav mr-auto">
-		            <li class="nav-item dropdown">
-		                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">Mascotas</a>
-		                <div class="dropdown-menu" aria-labelledby="dropdown01">
-		                    <a class="dropdown-item" href="{% url 'mascota:listar_mascotas' %}">Listar</a>
-		                    <a class="dropdown-item" href="{% url 'mascota:mascota_nueva' %}">Registrar</a>
-		                    <!-- <a class="dropdown-item" href="#">Something else here</a> -->
-		                </div>
-		            </li>
 
-		            <li class="nav-item dropdown">
-		                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">Adopcion</a>
-		                <div class="dropdown-menu" aria-labelledby="dropdown01">
-		                    <a class="dropdown-item" href="{% url 'adopcion:solicitar' %}">Solicitar</a>
-		                    <a class="dropdown-item" href="{% url 'adopcion:listar_solicitud' %}">Listar solicitudes</a>
-		                    <!-- <a class="dropdown-item" href="#">Something else here</a> -->
-		                </div>
-		            </li>
-		        </ul>
+	<!--NAVBAR-->
+	{% block navbar %}
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+		<a class="navbar-brand" href="..">Inicio</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		
+		<div class="collapse navbar-collapse">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">Mascotas</a>
+					<div class="dropdown-menu" aria-labelledby="dropdown01">
+						<a class="dropdown-item" href="{% url 'mascota:listar_mascotas' %}">Listar</a>
+						<a class="dropdown-item" href="{% url 'mascota:mascota_nueva' %}">Registrar</a>
+						<!-- <a class="dropdown-item" href="#">Something else here</a> -->
+					</div>
+				</li>
 
-	        	<ul class="navbar-nav mr-right">
-	        		<li class="nav-item">
-	        			<a class="nav-link" href="http://codigofacilito.com">Codigo Facilito</a>
-	        		</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">Adopcion</a>
+					<div class="dropdown-menu" aria-labelledby="dropdown01">
+						<a class="dropdown-item" href="{% url 'adopcion:solicitud' %}">Solicitar</a>
+						<a class="dropdown-item" href="{% url 'adopcion:listar_solicitud' %}">Listar solicitudes</a>
+						<!-- <a class="dropdown-item" href="#">Something else here</a> -->
+					</div>
+				</li>
+			</ul>
 
-	        		<li class="nav-item dropdown">
-		                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">Opciones</a>
-		                <div class="dropdown-menu" aria-labelledby="dropdown01">
-		                    <a class="dropdown-item" href="#">Salir</a>
-		                </div>
-	        		</li>
-		        </ul>
-		    </div>
-		</nav>
-		{% endblock%}
+			<ul class="navbar-nav mr-right">
+				<li class="nav-item">
+					<a class="nav-link" href="http://codigofacilito.com">Codigo Facilito</a>
+				</li>
 
-		<!-------------------------------------------------------------------------->
-	    <!-- 						      CONTENIDO    						      -->
-	    <!-------------------------------------------------------------------------->
-		<div class="p-5">
-			{% block content %}
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">Opciones</a>
+					<div class="dropdown-menu" aria-labelledby="dropdown01">
+						<a class="dropdown-item" href="#">Salir</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	{% endblock%}
+
+	<!--CONTENIDO-->
+	<main role="main" class="container">
+		<div class="starter-template">
+			{% block content %}k
 			<h5>Este es el bloque del contenido base</h5>
 			{% endblock %}
 		</div>
+	</main>
 
-		<!-------------------------------------------------------------------------->
-	    <!-- 						      FOOTER    						      -->
-	    <!-------------------------------------------------------------------------->
-		<div class="p-5">
-			{% block footer %}
-			<h4>Este es el bloque del footer base</h4>
-			{% endblock %}
-		</div>
-
-		<!-------------------------------------------------------------------------->
-	    <!-- 						Bootstrap JavaScript 						  -->
-	    <!-------------------------------------------------------------------------->
-
-	    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-
-		{% block extrajs %}
+	<!--FOOTER-->
+	<div class="p-5">
+		{% block footer %}
 		{% endblock %}
 	</div>
+
+	<!--Bootstrap JavaScript-->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+	<!--{% block extrajs %}-->	
+	<!--{% endblock %}-->	
 </body>
 </html>
