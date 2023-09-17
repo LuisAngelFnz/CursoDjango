@@ -1,0 +1,13 @@
+{% extends 'tbases/base.html' %}
+
+
+{% block content %}
+<form method="post">
+	{% csrf_token %}
+
+	<h3>¿Estas seguro de eliminar {{ object.persona.nombre }} {{ object.persona.apellidos }}?</h3>
+
+	<button class="btn btn-danger" type="submit">Sí, eliminar</button>
+	<a class="btn btn-default" href="{% url 'adopcion:listar_solicitud' %}">Cancelar</a>
+</form>
+{% endblock %}
