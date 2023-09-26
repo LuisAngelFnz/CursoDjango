@@ -14,7 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.contrib.auth.views import LoginView, logout_then_login
+from django.contrib.auth.views import (
+    LoginView,
+    logout_then_login,
+    PasswordResetView,  PasswordResetDoneView,
+    PasswordResetConfirmView, PasswordResetCompleteView
+)
 from django.urls import path,include
 # from apps.mascota.views import indexMascota
 
@@ -26,4 +31,31 @@ urlpatterns = [
     path('adopcion/', include('apps.adopcion.urls', namespace='adopcion')),
     path('mascota/',  include('apps.mascota.urls', namespace='mascota')),
     path('usuario/',  include('apps.usuario.urls', namespace='usuario')),
+    path(
+        'reset/password_reset',
+        PasswordResetView.as_view(),
+        {
+            'template_name':'tpass_recovery/passwd_reset_form.html',
+            'email_template_name':'tpass_recovery/passwd_reset_email.html'
+        },
+        name='password_reset'
+    ),
+    path(
+        'reset/password_reset_done',
+        PasswordResetDoneView.as_view(),
+        {'template_name':'tpass_recovery/passwd_reset_done.html'},
+        name='password_reset_done'
+    ),
+    path(
+        'reset/password_reset_confirm/<slug:uidb64>/<slug:token>/',
+        PasswordResetConfirmView.as_view(),
+        {'template_name':'tpass_recovery/passwd_reset_confirm.html'},
+        name='password_reset_confirm'
+    ),
+    path(
+        'reset/password_reset_complete',
+        PasswordResetCompleteView.as_view(),
+        {'template_name':'tpass_recovery/passwd_reset_complete.html'},
+        name='password_reset_complete'
+    )
 ]

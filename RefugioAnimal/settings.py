@@ -13,8 +13,10 @@ import os
 
 from django.urls import reverse_lazy
 from pathlib import Path
+import environ
 
-
+getenv = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
