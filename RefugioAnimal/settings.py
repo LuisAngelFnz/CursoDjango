@@ -139,3 +139,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = reverse_lazy('adopcion:listar_solicitud')
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
+
+EMAIL_USE_TLS       = True
+EMAIL_HOST          = getenv('mail_host')
+EMAIL_PORT          = getenv('mail_port')
+EMAIL_HOST_USER     = getenv('mail_user')
+EMAIL_HOST_PASSWORD = getenv('mail_password')
+EMAIL_BACKEND       = 'django.core.mail.backends.smtp.EmailBackend'
