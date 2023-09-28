@@ -78,6 +78,7 @@ class MascotaModel:
 
 class MascotaList(MascotaModel, ListView):
     template_name = 'tmascota/mascota_list.html'
+    paginate_by = 2
 
 class MascotaCRUD(MascotaModel):
     form_class    = MascotaForm
