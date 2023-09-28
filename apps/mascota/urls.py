@@ -9,7 +9,8 @@ from apps.mascota.views import (
     MascotaList,
     MascotaCreate,
     MascotaUpdate,
-    MascotaDelete
+    MascotaDelete,
+    WSMascotaList
 )
 
 app_name = 'mascota'
@@ -20,4 +21,5 @@ urlpatterns = [
     path('listar', login_required(MascotaList.as_view()), name='listar_mascotas'),
     path('editar/<int:pk>',  login_required(MascotaUpdate.as_view()), name='editar_mascota'),
     path('eliminar/<int:pk>',  login_required(MascotaDelete.as_view()), name='eliminar_mascota'),
+    path('ws/all', WSMascotaList, name='ws_all')
 ]
