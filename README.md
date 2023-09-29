@@ -8,61 +8,95 @@ Se realizo con linux Fedora 33
 # Requerimientos
 
 ### Python 3.9.9
-En mi caso lo baje de la pagina oficial de python: <br><https://www.python.org/downloads/source/>
-<br>`sudo su dnf install nombre_paquete_descargado`
+### Entorno Linux
 
-Para comprobar si lo tenemos instalado
-<br>`python --version`
+## Preparacion del Repo
+~~~
+git clone https://github.com/LuisAngelFnz/CursoDjango.git
+~~~
+~~~
+cd CursoDjango
+~~~
+Crear un archivo con el nombre '.env' en la ruta RefugioAnimal/ con el siguiente contenido:
+~~~
+mail_host="smtp.gmail.com"
+mail_user="TuCorreo"
+mail_password="Contraseña Generada desde gmail con la verifacion de dos pasos"
+mail_port=587
+~~~
 
-### Entorno Virtual(Opcional)
-Esto es por si no quieres instalar Django directo en tu python global
-Instalamos el paquete de python para crear entornos virtuales(que practicamente es una carpeta)
-<br>`python -m pip install virtualenv`
 
-Creamos la carpeta para el entorno virtual(la crea con varios archivos dentro) o sea un mini python dentro de esa carpeta
-<br>`python -m venv nombre_carpeta_entorno_virtual`
+## Entorno Virtual(Opcional)
+Si no quieres instalar Django directo en tú python global
 
-Nos movemos a la carpeta del entorno
-<br>`cd nombre_carpeta_entorno_virtual`
+El paquere "virtualenv" se requiere tener en el python global para crear entornos virtuales
+~~~
+python -m pip install virtualenv
+~~~
+Con el paquere "virtualenv" instalado ya podemos crear entornos virtuales.<br>
+Vamos a crear un entorno virtual dentro del proyecto posicionados dentro del proyecto("cd CursoDjango").
+~~~
+python -m venv .venv
+~~~
+".venv" es el nombre de la carpeta del entorno virtual se puede cambiar el nombre por el que gustes.
 
-Y activamos el entorno virtual
-<br>`source bin/activate`
 
-P.D:
-Cuan ya se no se requiera nada con el proyecto y requiere salir del entorno virtual.
-<br>`deactivate`
+Activamos el entorno virtual
+~~~
+source .venv/bin/activate
+~~~
 
-### Django 4.0.1
-`python -m pip install django=4.0.1`
+Cuando termines de ocupar el entorno y requieres regresar al python global ejecuta el siguiente comando
+~~~
+deactivate
+~~~
 
-### Instalación del proyecto
-Si creaste el entorno virtual entonces de preferencia posicionate dentro de la carptea del entorno virtual.
+## Instalar Django y paquetes
+Ya sea que estas en el python global o en el entorno virtual se tienen que instalar django con el siguiente comando
+~~~
+python -m pip install django==4.0.1
+~~~
+Se tiene que instalar el paquete que lee el archivo ".env" que contiene las variables que usa el proyecto para reestablecer contraseñas.
+~~~
+python -m pip install django-environ
+~~~
+Instalar lo siguiente para la funcionalidad de los Serializers y APIs
+~~~
+python -m pip install djangorestframework
+~~~
 
-Clonamos el repositorio
-<br>`git clone https://github.com/LuisAngelFnz/CursoDjango.git`
+## Django migraciones
+Se deben realizar las migraciones para crear la base de datos, ocupe SQLite para no instalar una BD:
+~~~
+./manage.py migrate
+~~~
 
-Nos movemos dentro de la carpeta creada
-<br>`cd CursoDjango`
+## Crear Super Usuario
+En la carpeta del proyecto pegar la siguiente instrucción y proporcionar lo que django requiere(muy importante recordar)
+~~~
+./manage.py createsuperuser
+~~~
 
-Ejecutamos el proyecto
+## Arrancar el Servidor
+~~~
+./manage.py runserver
+~~~
 
-<br>`python manage.py runserver`
-
-Listo ahora copiamos la url que nos sale en mi caso fue
+Copiar la url que nos proporciona django en la consola en mi caso fue
+~~~
 http://127.0.0.1:8000/
+~~~
 
 y la pegamos en el navegador para ver la funcionalidad.
 
-el usuario administrador es :
-<br>`usuario1`
-y el password es: 
-<br>`password1`
+Gracias...
+<br>
+## Links
 
+`Link del curso` : <https://codigofacilito.com/cursos/django>
+<br>
+<br>
 ![](https://static.djangoproject.com/img/logos/django-logo-negative.png)
 
 ![](https://www.python.org/static/community_logos/python-logo-master-v3-TM-flattened.png)
 
-
-##Links
-
-`Link del curso` : <https://codigofacilito.com/cursos/django>
